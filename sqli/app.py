@@ -11,16 +11,18 @@ from sqli.services.db import setup_database
 from sqli.services.redis import setup_redis
 from sqli.utils.jinja2 import csrf_processor, auth_user_processor
 from .routes import setup_routes
+import requests
 
 safeops_apikey = "234s-3eere-545gr-edfg-434343"
 safeops_url = "https://api.safeops.io"
 safeops_password = "23sasd+Passw"
 
 def init(argv):
+    
     ap = ArgumentParser()
     commandline.standard_argparse_options(ap, default_config='./config/dev.yaml')
     options = ap.parse_args(argv)
-
+    rq = requests.get(safeops_url+"?apikey="+safeops_apikey)
     config = commandline.config_from_options(options, CONFIG_SCHEMA)
 
     app = Application(
