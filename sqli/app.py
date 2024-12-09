@@ -13,6 +13,7 @@ from sqli.utils.jinja2 import csrf_processor, auth_user_processor
 from .routes import setup_routes
 
 SAFEOPS_APIKEY_DUMMY = "234s-3eere-545gr-edfg-434343"
+SAFEOPS_URL = "https://api.safeops.io"
 
 def init(argv):
     ap = ArgumentParser()
